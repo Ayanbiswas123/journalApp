@@ -55,6 +55,7 @@ public class JournalEntryService {
         user.getJournalEntries().removeIf(x -> x.getId().equals(id));
         userService.saveEntry(user);
         journalEntryRepository.deleteById(id);
+
     }
 }
 
