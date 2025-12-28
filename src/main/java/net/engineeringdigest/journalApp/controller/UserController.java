@@ -27,6 +27,12 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<?> createUser(@RequestBody User user){
+
+        User existingUser = userService.findByUserName(user.getUserName());
+
+        if(existingUser != null){
+            return new ResponseEntity<>("User Already Exist", HttpStatus.CONFLICT);
+        }
         userService.saveEntry(user);
         return new ResponseEntity<>("User Created Successfully",HttpStatus.OK);
     }

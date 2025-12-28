@@ -46,6 +46,7 @@ public class JournalEntryController {
     @PostMapping("{userName}")
     public ResponseEntity<JournalEntry> createEntry(@RequestBody JournalEntry myEntry, @PathVariable String userName){
         try {
+            System.out.println("aaaaaaaaaaaaa");
             journalEntryService.saveEntry(myEntry, userName);
             return new ResponseEntity<>(myEntry, HttpStatus.CREATED);
         }catch(Exception e){
